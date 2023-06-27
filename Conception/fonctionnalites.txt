@@ -1,0 +1,20 @@
+Version 1 : 
+
+	- Création de compte
+		- CRUD
+	- Connexion
+	- Création de profil
+	- Affichage profil
+		- CRUD
+	- Création topic
+		- CRUD
+	- Ajout message
+
+Version 2 : 
+	
+	- Ajout photo de profil
+	- Affichage photo 
+	- Admin 
+		- Gestion de profils
+		- Gestion des topics
+		- Gestion des messages
