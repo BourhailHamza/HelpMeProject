@@ -1,13 +1,13 @@
-<?php include_once 'head.php'; ?>
+<?php include_once 'header.php'; ?>
 
 <body>
     <form method="post" action="">
         <img src="../public/assets/logotype.png" alt="HelpMe!">
-        <h3>SIGN IN</h3>
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Password">
+        <h1>SIGN IN</h1>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
         <input type="submit" value="Sign in">
-        <a href="">I don't have an account</a>
+        <a href="signup.php">I don't have an account</a>
     </form>
 </body>
 
