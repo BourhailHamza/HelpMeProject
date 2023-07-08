@@ -1,29 +1,17 @@
 <?php
 
-namespace App\Entity;
-
 class Profile {
 
-    private $idProfile;
     private $fkEmail;
     private $username;
     private $profileImage;
     private $role;
 
-    public function __construct($idProfile, $fkEmail, $username, $profileImage, $role) {
-        $this->idProfile = $idProfile;
+    public function __construct($fkEmail, $username, $profileImage, $role) {
         $this->fkEmail = $fkEmail;
         $this->username = $username;
         $this->profileImage = $profileImage;
         $this->role = $role;
-    }
-
-    public function getIdProfile() {
-        return $this->idProfile;
-    }
-
-    public function setIdProfile($idProfile) {
-        $this->idProfile = $idProfile;
     }
 
     public function getFkEmail() {

@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Entity;
-
 class Topic {
 
     private $idTopic;

@@ -1,4 +1,5 @@
 <?php
 
 $role = "admin";
-$profile_name = "Username 1";
+$profile_name = "";
+$current_page = "";

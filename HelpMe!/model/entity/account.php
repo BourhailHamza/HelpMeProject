@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Entity;
-
 class Account {
 
     private $email;
