@@ -16,7 +16,8 @@ To make the page easier to use, I have tried to use large elements with bright c
 
 ## Security
 For page security I use php session to confirm user is logged in on each page, if user never logs in they will be redirected to a page with a 404 error (in case they try to login with a url) .
-I also verify that the user is an administrator when accessing the administrator page and also I only make the configuration button appear if the account is of the administrator type
+I also verify that the user is an administrator when accessing the administrator page and also I only make the configuration button appear if the account is of the administrator type.
+I have created index files to prevent users from seeing all the files contained in this project.
 
 ## Mejoras posibles
 Several improvements could be added, starting with the functionality of adding messages to each topic 😅. The button called "Read more" that you can see in each topic is not functional, its objective was to show the same topic and be able to show all the messages and allow the user to add one.
