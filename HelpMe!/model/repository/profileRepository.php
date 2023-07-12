@@ -42,29 +42,44 @@ class ProfileRepository {
         }
     }
     
-    public function getProfileById($id) {
-        $query = "SELECT * FROM profile WHERE idProfile = ?";
-        $statement = $this->connection->prepare($query);
-        $statement->execute([$id]);
+    public function getProfilesByEmail($email) {
+        $host = 'localhost';
+        $dbName = 'forum';
+        $username = 'root';
+        $password = '';
+
+        $db = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $username, $password);
         
-        $row = $statement->fetch(PDO::FETCH_ASSOC);
-        
-        if ($row) {
-            return new Profile($row['idProfile'], $row['fk_email'], $row['username'], $row['profile_image'], $row['role']);
+        $query = "SELECT * FROM profile WHERE fk_email = ?";
+
+        $request = $db->prepare($query);
+        $request->execute([$email]);
+    
+        $profiles = [];
+    
+        while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
+            $profiles[] = new Profile($row['id_profile'], $row['fk_email'], $row['username'], $row['profile_image'], $row['role']);
         }
-        
-        return null;
+    
+        return $profiles;
     }
     
     public function getProfileByUsername($username) {
+        $host = 'localhost';
+        $dbName = 'forum';
+        $user = 'root';
+        $password = '';
+
+        $db = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $user, $password);
+
         $query = "SELECT * FROM profile WHERE username = ?";
-        $statement = $this->connection->prepare($query);
-        $statement->execute([$username]);
+        $request = $db->prepare($query);
+        $request->execute([$username]);
         
-        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        $row = $request->fetch(PDO::FETCH_ASSOC);
         
         if ($row) {
-            return new Profile($row['idProfile'], $row['fk_email'], $row['username'], $row['profile_image'], $row['role']);
+            return new Profile($row['id_profile'], $row['fk_email'], $row['username'], $row['profile_image'], $row['role']);
         }
         
         return null;

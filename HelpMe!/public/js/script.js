@@ -2,14 +2,18 @@ function logout() {
     window.location.href = "logout.php";
 }
 
+function openAdmin() {
+  window.location.href = "admin.php";
+}
+
 function previewFile(event) {
-    const file = event.target.files[0]; // Get the selected file
+    const file = event.target.files[0];
     const reader = new FileReader();
   
     reader.onload = function (e) {
       const previewImg = document.getElementById("previewImage");
-      previewImg.src = e.target.result; // Set the source of the image element to the file's data URL
+      previewImg.src = e.target.result;
     };
   
-    reader.readAsDataURL(file); // Read the file as a data URL
-  }
+    reader.readAsDataURL(file);
+}

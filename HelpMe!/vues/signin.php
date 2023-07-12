@@ -8,9 +8,10 @@
     include_once '../model/entity/account.php';
     include_once  '../model/repository/accountRepository.php';
 
-    $class_error = "d-none";
+    include_once '../model/entity/profile.php';
+    include_once  '../model/repository/profileRepository.php';
 
-    session_start();
+    $class_error = "d-none";
 
     if (isset($_SESSION['email'])) {
         header('Location: home.php');
@@ -25,15 +26,33 @@
         $account = $account_repository->getAccountByEmail($email);
 
         if ($account != null) {
-            if (password_verify($password, $account->getPassword()) == true) {
+            if (password_verify($password, $account->getPassword())) {
                 $class_error = "d-none";
-
+        
                 $_SESSION['email'] = $email;
-
+        
                 $current_email = $email;
+        
+                $profile_repository = new ProfileRepository();
+                $profiles = $profile_repository->getProfilesByEmail($email);
+        
+                if ($profiles) {
+                    $profile = $profiles[0];
+        
+                    $_SESSION['idProfile'] = $profile->getIdProfile();
+                    var_dump($profile->getIdProfile());
+                    $_SESSION['username'] = $profile->getUsername();
 
-                header('Location: home.php');
-                exit();
+                    if ($profile->getRole() == "admin") {
+                        $_SESSION['role'] = $profile->getRole();
+                    }
+                    
+                    header('Location: home.php');
+                    exit();
+                } else {
+                    header('Location: addProfile.php');
+                    exit();
+                }
             } else {
                 $class_error = "d-block";
             }
@@ -42,7 +61,7 @@
 ?>
 
 <body>
-    <form method="post" action="">
+    <form class="sign" method="post" action="">
         <img src="../public/assets/logotype.png" alt="HelpMe!">
         <h1>SIGN IN</h1>
         <input type="email" name="email" placeholder="Email" required>

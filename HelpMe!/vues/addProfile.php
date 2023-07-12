@@ -6,11 +6,10 @@
     include_once 'header.php'; 
 
     include_once '../model/entity/profile.php';
-    include_once  '../model/repository/profileRepository.php';
+    include_once '../model/repository/profileRepository.php';
 
     $class_error = "d-none";
-
-    session_start();
+    $class_exist = "d-none";
 
     if (!isset($_SESSION['email'])) {
         header('Location: signin.php');
@@ -23,24 +22,29 @@
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
-            $class_error = "d-none";
+        $username = $_POST['username'];
 
-            $username = $_POST['username'];
-            $profilePicture = $target_file;
-
-
-            $profile = new Profile($_SESSION['email'], $username, $profilePicture, "user");
-            $profileRepository = new ProfileRepository();
-            $profileRepository->newProfile($profile);
-
-            $_SESSION['username'] = $username;
-
-            header("Location: home.php");
-            exit();
-
+        // Check if username already exists
+        $profileRepository = new ProfileRepository();
+        $existingProfile = $profileRepository->getProfileByUsername($username);
+        if ($existingProfile) {
+            $class_exist = "d-block";
         } else {
-            $class_error = "d-block";
+            if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
+                $class_error = "d-none";
+
+                $profilePicture = $target_file;
+
+                $profile = new Profile(null, $_SESSION['email'], $username, $profilePicture, "user");
+                $profileRepository->newProfile($profile);
+
+                $_SESSION['username'] = $username;
+
+                header("Location: home.php");
+                exit();
+            } else {
+                $class_error = "d-block";
+            }
         }
     }
 ?>
@@ -55,6 +59,7 @@
         </label>
         <img id="previewImage" alt="Preview">
         <p class="<?php echo $class_error ?>">There was an error uploading the file. Try again</p>
+        <p class="<?php echo $class_exist ?>">This username already exist. Please choose anotcher one</p>
         <input type="submit" value="Create profile">
     </form>
 </body>

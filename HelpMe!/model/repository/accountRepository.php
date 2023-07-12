@@ -56,5 +56,19 @@ class AccountRepository {
         
         return null;
     }
+
+    public function getAllAccounts() {
+        $query = "SELECT * FROM account";
+        $statement = $this->connection->prepare($query);
+        $statement->execute();
+    
+        $accounts = [];
+    
+        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+            $accounts[] = new Account($row['email'], $row['password'], $row['creation_date']);
+        }
+    
+        return $accounts;
+    }
     
 }

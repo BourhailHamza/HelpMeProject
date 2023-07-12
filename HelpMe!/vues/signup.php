@@ -11,8 +11,6 @@
     $class_error = "d-none";
     $class_exist = "d-none";
 
-    session_start();
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
         $new_password = $_POST['new_password'];
@@ -48,7 +46,7 @@
 ?>
 
 <body>
-    <form method="post" action="">
+    <form class="sign" method="post" action="">
         <img src="../public/assets/logotype.png" alt="HelpMe!">
         <h1>SIGN UP</h1>
         <input type="email" name="email" placeholder="Email" required>
