@@ -12,7 +12,7 @@
     include_once  '../model/repository/blacklistRepository.php';
 
     if (!isset($_SESSION['email'])) {
-        header('Location: 404.php');
+        header('Location: signin.php');
         exit();
     } else {
         $email = $_SESSION['email'];
@@ -21,7 +21,7 @@
         $blacklistedProfiles = $blacklistRepository->getBlacklistByEmail($email);
 
         if (!empty($blacklistedProfiles)) {
-            header('Location: 404.php');
+            header('Location: signin.php');
             exit();
         }
     }
