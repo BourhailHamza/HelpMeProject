@@ -6,6 +6,7 @@ On this platform you can ask for help from all those people who share your same 
 To install the project and be able to test it on your device:
  - Download this project in zip file or clone it to your device.
  - Copy the folder "HelpMe!" in your server folder, if you use WAMP surely you should access "C:\wamp64\www" and paste your file.
+ - Import the sql file in phpmyadmin (this file contains some sample data)
  - Open your browser and search for "http://127.0.0.1/HelpMe!/vues/signin.php" or "localhost/HelpMe!/vues/signin.php"
  - ENJOY THE KNOWLEDGE OF OTHERS AND CONTRIBUTE YOUR GRAIN OF SAND
 
