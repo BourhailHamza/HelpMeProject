@@ -20,7 +20,7 @@ For page security I use php session to confirm user is logged in on each page, i
 I also verify that the user is an administrator when accessing the administrator page and also I only make the configuration button appear if the account is of the administrator type.
 I have created index files to prevent users from seeing all the files contained in this project.
 
-## Mejoras posibles
+## Possible improvements
 Several improvements could be added, starting with the functionality of adding messages to each topic 😅. The button called "Read more" that you can see in each topic is not functional, its objective was to show the same topic and be able to show all the messages and allow the user to add one.
 Another improvement would be the use of controllers 😂. I have created a folder for all the controllers, but when I got into the code I just missed creating them. What I could do to improve it is extract the functional code of each page, put it in a controller and import (include) the controller in the page that would only be in charge of displaying the visual.
 I would also add buttons on certain pages to be able to return to the main page, for example from the profile creation screen and the administrator page you cannot return to the main page.
