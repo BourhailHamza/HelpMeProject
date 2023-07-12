@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 12 juil. 2023 à 17:37
+-- Généré le : mer. 12 juil. 2023 à 17:40
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -40,10 +40,7 @@ CREATE TABLE IF NOT EXISTS `account` (
 --
 
 INSERT INTO `account` (`email`, `password`, `creation_date`) VALUES
-('bilal@bilal.com', '$2y$10$U2Jy2W0dwhvmLP0XSZpwsO6pI93htzKnbSVXMiSF5TmaV1OCJJlEG', '2023-07-10 19:16:57'),
-('bourhailhamza@gmail.com', '$2y$10$ZhOhsTHcu6rH.sY187zNLe/2DWfxeo0Eg.ez2.u7fwzu.m3TzUU9m', '2023-07-08 21:31:45'),
 ('cnam@cnam.fr', '$2y$10$pQ.LqD1SZvzbUGtglCp6IuTM0D4/9xnXnZnGxE7LC568TrsOQWmjG', '2023-07-09 22:01:15'),
-('jehadbb@gmail.com', '$2y$10$3tM.h/W0JItver4OKPDDAuBw9rH9OQtQFL0P0GT5DtU/aNU2XgyHq', '2023-07-09 20:58:57'),
 ('test@test.fr', '$2y$10$5C6EbWNkUzPpyJ75DAkAJ.Aq20yRx1vkkmj76vMHd7mDyxZ64enH2', '2023-07-09 11:16:56');
 
 -- --------------------------------------------------------
@@ -106,13 +103,8 @@ CREATE TABLE IF NOT EXISTS `profile` (
 --
 
 INSERT INTO `profile` (`id_profile`, `fk_email`, `username`, `profile_image`, `role`) VALUES
-(9, 'bourhailhamza@gmail.com', 'hxmzabb', '../public/pictures/pasted image 0.png', 'user'),
 (10, 'test@test.fr', 'as', '../public/pictures/Sand-Clock-PNG-Picture.png', 'user'),
-(11, 'bourhailhamza@gmail.com', 'hamzito', NULL, 'admin'),
-(12, 'jehadbb@gmail.com', 'jehadbb', '../public/pictures/PhpStorm_Icon.svg.png', 'user'),
-(13, 'cnam@cnam.fr', 'cnam', '../public/pictures/Scema-passerelle-monetique.png', 'user'),
-(14, 'bilal@bilal.com', 'p0nlee', '../public/pictures/pasted image 0.png', 'user'),
-(15, 'bilal@bilal.com', 'azar.bilal', '../public/pictures/PhpStorm_Icon.svg.png', 'user');
+(13, 'cnam@cnam.fr', 'cnam', '../public/pictures/Scema-passerelle-monetique.png', 'user');
 
 -- --------------------------------------------------------
 
